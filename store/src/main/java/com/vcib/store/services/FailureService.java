@@ -37,7 +37,7 @@ public class FailureService {
 
     private void simulateUnresponsiveness() {
         try {
-            Thread.sleep(OMISSION_DURATION_MS); // Sleep to simulate omission failure
+            Thread.sleep(OMISSION_DURATION_MS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
             throw new RuntimeException("Thread interrupted during omission failure");

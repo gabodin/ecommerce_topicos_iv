@@ -26,19 +26,19 @@ public class ProductService {
 	
 	private Product getProductWithRetry(Long id) {
 		int maxAttempts = 5;
-        int attempt = 0;
-        while (attempt < maxAttempts) {
-            try {
-                return storeClient.product(id);
-            } catch (Exception e) {
-                attempt++;
-                System.out.println("Attempt " + attempt + " failed: " + e.getMessage());
-                if (attempt >= maxAttempts) {
-                    throw new RuntimeException("Max retry attempts reached", e);
-                }
-            }
-        }
-        throw new RuntimeException("Unexpected error");
+		int attempt = 0;
+		while (attempt < maxAttempts) {
+				try {
+						return storeClient.product(id);
+				} catch (Exception e) {
+						attempt++;
+						System.out.println("Attempt " + attempt + " failed: " + e.getMessage());
+						if (attempt >= maxAttempts) {
+								throw new RuntimeException("Max retry attempts reached", e);
+						}
+				}
+		}
+		throw new RuntimeException("Unexpected error");
 	}
 	
 	private Product getProductWithoutRetry(Long id) {
